@@ -1,0 +1,164 @@
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Students Management</h2>
+
+    <button class="btn btn-success shadow" routerLink="/add-student">
+      ➕ Add Student
+    </button>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="row mb-4">
+
+    <div class="col-md-3">
+      <div class="card bg-primary text-white shadow border-0">
+        <div class="card-body text-center">
+          <h6>Total Students</h6>
+          <h2>{{ totalStudents }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-success text-white shadow border-0">
+        <div class="card-body text-center">
+          <h6>Present</h6>
+          <h2>{{ presentStudents }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-warning text-dark shadow border-0">
+        <div class="card-body text-center">
+          <h6>Active</h6>
+          <h2>{{ activeStudents }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-danger text-white shadow border-0">
+        <div class="card-body text-center">
+          <h6>Absent</h6>
+          <h2>{{ absentStudents }}</h2>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Search -->
+  <div class="row mb-3">
+
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+   placeholder="🔍 Search by ID, Roll No, Name, Department, Semester, Branch, Email, Phone or Status"
+        [(ngModel)]="searchText">
+    </div>
+
+    <div class="col-md-2">
+      <button
+        class="btn btn-secondary w-100"
+        (click)="searchText=''">
+        Reset
+      </button>
+    </div>
+
+  </div>
+
+  <table class="table table-bordered table-hover table-striped shadow">
+
+    <thead class="table-dark text-center">
+      <tr>
+        <th>ID</th>
+        <th>Roll No</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Semester</th>
+        <th>Branch</th>
+        <th>Subjects</th>
+        <th>Internal</th>
+        <th>Marks</th>
+        <th>CGPA</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Attendance</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngIf="filteredStudents().length === 0">
+        <td colspan="15" class="text-center text-danger fw-bold">
+          No Students Found
+        </td>
+      </tr>
+
+      <tr *ngFor="let s of filteredStudents()">
+
+        <td>{{ s.id }}</td>
+        <td>{{ s.rollNo }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.department }}</td>
+        <td>{{ s.semester }}</td>
+        <td>{{ s.branch }}</td>
+        <td>{{ s.subjects }}</td>
+        <td>{{ s.internalMarks }}</td>
+        <td>{{ s.marks }}</td>
+        <td>{{ s.cgpa }}</td>
+        <td>{{ s.email }}</td>
+        <td>{{ s.phone }}</td>
+<td class="text-center">
+
+  <input
+    type="checkbox"
+    class="form-check-input"
+    [(ngModel)]="s.present">
+
+</td>
+
+        <td class="text-center">
+
+          <span class="badge bg-success" *ngIf="s.status=='Active'">
+            Active
+          </span>
+
+          <span class="badge bg-danger" *ngIf="s.status=='Inactive'">
+            Inactive
+          </span>
+
+        </td>
+
+        <td class="text-center">
+<button
+  class="btn btn-info btn-sm me-2"
+  (click)="viewStudent(s)">
+  View
+</button>
+          <button
+            class="btn btn-warning btn-sm me-2"
+            (click)="editStudent(s)">
+            Edit
+          </button>
+
+          <button
+            class="btn btn-danger btn-sm"
+            (click)="deleteStudent(s.id)">
+            Delete
+          </button>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

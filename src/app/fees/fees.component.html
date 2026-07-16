@@ -1,0 +1,325 @@
+<div class="container mt-4">
+
+
+  <!-- Header -->
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+      <h2>💰 Finance / Fees</h2>
+
+      <small class="text-muted">
+        Academic Session : {{academicSession}}
+      </small>
+
+    </div>
+
+
+    <div>
+
+
+      <button 
+      class="btn btn-primary me-2"
+      (click)="payNow()">
+
+      💳 Pay Now
+
+      </button>
+
+
+
+      <button 
+      class="btn btn-success"
+      (click)="downloadReceipt()">
+
+      📄 Download Receipt
+
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+  <!-- Summary -->
+
+
+  <div class="row g-3 mb-4">
+
+
+    <div class="col-md-4">
+
+      <div class="card shadow text-center p-3">
+
+
+        <h6>Total Payable</h6>
+
+
+        <h3>
+          ₹{{totalPayable}}
+        </h3>
+
+
+      </div>
+
+
+    </div>
+
+
+
+
+    <div class="col-md-4">
+
+      <div class="card shadow text-center p-3">
+
+
+        <h6>Collected</h6>
+
+
+        <h3 class="text-success">
+          ₹{{collected}}
+        </h3>
+
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="col-md-4">
+
+      <div class="card shadow text-center p-3">
+
+
+        <h6>Outstanding</h6>
+
+
+        <h3 class="text-primary">
+          ₹{{outstanding}}
+        </h3>
+
+
+        <small>
+          {{outstanding<=0?'Excess Paid':'Pending'}}
+        </small>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+  <!-- Fee Structure -->
+
+
+  <div class="card shadow mb-4">
+
+
+    <div class="card-header">
+
+      <b>
+        Fee Structure
+      </b>
+
+    </div>
+
+
+
+
+    <div class="table-responsive">
+
+
+    <table class="table table-hover mb-0">
+
+
+    <thead class="table-light">
+
+    <tr>
+
+      <th>Fee Head</th>
+
+      <th>Total</th>
+
+      <th>Collected</th>
+
+      <th>Outstanding</th>
+
+      <th>Status</th>
+
+    </tr>
+
+
+    </thead>
+
+
+
+
+    <tbody>
+
+
+    <tr *ngFor="let fee of fees">
+
+
+      <td>
+        {{fee.head}}
+      </td>
+
+
+      <td>
+        ₹{{fee.total}}
+      </td>
+
+
+      <td>
+        ₹{{fee.collected}}
+      </td>
+
+
+      <td>
+        ₹{{fee.pending}}
+      </td>
+
+
+      <td>
+
+      <span 
+      class="badge"
+      [ngClass]="fee.status=='Paid'?'bg-success':'bg-secondary'">
+
+      {{fee.status}}
+
+      </span>
+
+
+      </td>
+
+
+    </tr>
+
+
+
+    </tbody>
+
+
+    </table>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+  <!-- Transaction History -->
+
+
+  <div class="card shadow">
+
+
+    <div class="card-header">
+
+      <b>
+        Transaction History
+      </b>
+
+    </div>
+
+
+
+
+    <div class="table-responsive">
+
+
+    <table class="table table-bordered mb-0">
+
+
+    <thead class="table-light">
+
+
+    <tr>
+
+      <th>Date</th>
+
+      <th>Transaction ID</th>
+
+      <th>Mode</th>
+
+      <th>Amount</th>
+
+      <th>Status</th>
+
+    </tr>
+
+
+    </thead>
+
+
+
+
+    <tbody>
+
+
+    <tr *ngFor="let t oftransactions">
+
+
+      <td>{{t.date}}</td>
+
+      <td>{{t.id}}</td>
+
+      <td>{{t.mode}}</td>
+
+      <td>₹{{t.amount}}</td>
+
+
+      <td>
+
+      <span class="badge bg-success">
+
+      {{t.status}}
+
+      </span>
+
+      </td>
+
+
+    </tr>
+
+
+    </tbody>
+
+
+    </table>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+</div>

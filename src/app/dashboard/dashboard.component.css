@@ -1,0 +1,428 @@
+/* ================= Page Background ================= */
+
+:host{
+    display:block;
+    background:#f4f7fc;
+    min-height:100vh;
+    font-family:'Poppins',sans-serif;
+}
+
+.container-fluid{
+    padding-left:30px;
+    padding-right:30px;
+}
+
+
+/* ================= Dashboard Header ================= */
+
+.dashboard-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:white;
+    padding:25px;
+    border-radius:20px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+
+.dashboard-title h2{
+
+    font-weight:700;
+    color:#1e293b;
+    margin:0;
+
+}
+
+
+.dashboard-title p{
+
+    margin-top:8px;
+    color:#64748b;
+
+}
+
+
+/* ================= Search ================= */
+
+.search-box input{
+
+    width:260px;
+    height:45px;
+
+    border-radius:25px;
+    border:1px solid #e2e8f0;
+
+    padding-left:20px;
+
+}
+
+
+.search-box input:focus{
+
+    box-shadow:none;
+    border-color:#2563eb;
+
+}
+
+
+/* ================= Notification ================= */
+
+.notification-btn{
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#eff6ff;
+    color:#2563eb;
+
+    font-size:20px;
+
+}
+
+
+/* ================= Welcome Banner ================= */
+
+
+.welcome-banner{
+
+    background:
+    linear-gradient(135deg,#4f46e5,#2563eb);
+
+    color:white;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    margin-bottom:30px;
+
+    box-shadow:
+    0 15px 35px rgba(37,99,235,.25);
+
+}
+
+
+.welcome-banner h2{
+
+    font-weight:700;
+
+}
+
+
+.welcome-banner p{
+
+    opacity:.9;
+
+}
+
+
+
+/* ================= Dashboard Cards ================= */
+
+
+.dashboard-card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    height:100%;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+
+.dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 18px 35px rgba(0,0,0,.12);
+
+}
+
+
+.dashboard-card h6{
+
+    margin-top:20px;
+
+    color:#64748b;
+
+}
+
+
+.dashboard-card h3{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+}
+
+
+
+/* ================= Card Icons ================= */
+
+
+.card-icon{
+
+    width:55px;
+    height:55px;
+
+    border-radius:15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+
+    color:white;
+
+}
+
+
+
+.bg-blue{
+
+    background:#2563eb;
+
+}
+
+
+.bg-green{
+
+    background:#16a34a;
+
+}
+
+
+.bg-orange{
+
+    background:#f97316;
+
+}
+
+
+.bg-purple{
+
+    background:#9333ea;
+
+}
+
+
+
+/* ================= Chart Cards ================= */
+
+
+.chart-card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+
+.chart-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 18px 35px rgba(0,0,0,.12);
+
+}
+
+
+.chart-card h5{
+
+    font-weight:700;
+
+    color:#1e293b;
+
+}
+
+
+
+/* ================= Table ================= */
+
+
+.table{
+
+    margin-bottom:0;
+
+}
+
+
+.table thead{
+
+    background:#f8fafc;
+
+}
+
+
+.table th{
+
+    color:#475569;
+
+    font-weight:600;
+
+}
+
+
+.table td{
+
+    color:#334155;
+
+    vertical-align:middle;
+
+}
+
+
+
+/* ================= Buttons ================= */
+
+
+.btn{
+
+    border-radius:12px;
+
+    padding:10px;
+
+    font-weight:500;
+
+}
+
+
+
+/* ================= Progress ================= */
+
+
+.progress{
+
+    height:12px;
+
+    border-radius:20px;
+
+    background:#e5e7eb;
+
+}
+
+
+.progress-bar{
+
+    border-radius:20px;
+
+}
+
+
+
+/* ================= Scrollbar ================= */
+
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+::-webkit-scrollbar-thumb{
+
+    background:#4f46e5;
+
+    border-radius:10px;
+
+}
+
+
+
+/* ================= Responsive ================= */
+
+
+@media(max-width:768px){
+
+.container-fluid{
+
+    padding-left:15px;
+    padding-right:15px;
+
+}
+
+
+.dashboard-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+}
+
+
+.search-box input{
+
+    width:100%;
+
+}
+
+
+.dashboard-title h2{
+
+    font-size:24px;
+
+}
+
+
+.chart-card{
+
+    margin-bottom:20px;
+
+}
+
+
+.dashboard-card h3{
+
+    font-size:26px;
+
+}
+
+
+}
+/* Attendance Overview Chart Size */
+
+.chart-card canvas{
+    max-height:300px;
+}
+
+
+/* Only Attendance Chart */
+
+.col-lg-8 canvas{
+    height:260px !important;
+}

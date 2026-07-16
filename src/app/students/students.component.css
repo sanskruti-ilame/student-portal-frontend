@@ -1,0 +1,23 @@
+table{
+    background:white;
+}
+
+th{
+    text-align:center;
+}
+
+td{
+    vertical-align:middle;
+}
+
+.btn{
+    min-width:75px;
+}
+
+input{
+    max-width:350px;
+}
+
+h2{
+    font-weight:bold;
+}

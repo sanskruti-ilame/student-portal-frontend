@@ -1,0 +1,52 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Rahul Sharma",
+      "department": "BTech IT",
+      "semester": "6th",
+      "cgpa": 8.5,
+      "attendance": 92
+    },
+    {
+      "id": 2,
+      "name": "Neha Verma",
+      "department": "BTech IT",
+      "semester": "5th",
+      "cgpa": 8.9,
+      "attendance": 95
+    },
+    {
+      "id": 3,
+      "name": "Ravi Kumar",
+      "department": "BTech AI",
+      "semester": "4th",
+      "cgpa": 8.2,
+      "attendance": 88
+    },
+    {
+      "id": 4,
+      "name": "Priya Singh",
+      "department": "BTech CSE",
+      "semester": "6th",
+      "cgpa": 9.1,
+      "attendance": 96
+    },
+    {
+      "id": 5,
+      "name": "Akash Patil",
+      "department": "BTech ECE",
+      "semester": "7th",
+      "cgpa": 8,
+      "attendance": 90
+    },
+    {
+      "id": 6,
+      "name": "Pooja Deshmukh",
+      "department": "BTech ME",
+      "semester": "8th",
+      "cgpa": 8.7,
+      "attendance": 94
+    }
+  ]
+}

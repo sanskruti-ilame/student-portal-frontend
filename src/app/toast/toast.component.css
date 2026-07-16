@@ -1,0 +1,26 @@
+.toast-box {
+
+  position: fixed;
+
+  top: 20px;
+
+  right: 20px;
+
+  background: #198754;
+
+  color: white;
+
+  padding: 15px 25px;
+
+  border-radius: 8px;
+
+  z-index: 9999;
+
+}
+
+
+.toast-box.error {
+
+  background: #dc3545;
+
+}

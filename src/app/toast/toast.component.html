@@ -1,0 +1,8 @@
+<div 
+*ngIf="toastService.message"
+class="toast-box"
+[class.error]="toastService.type === 'error'">
+
+{{toastService.message}}
+
+</div>

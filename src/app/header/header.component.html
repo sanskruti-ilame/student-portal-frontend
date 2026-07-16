@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+
+  <div class="container-fluid">
+
+    <a class="navbar-brand fw-bold">
+      🎓 Student Portal
+    </a>
+
+    <form class="d-flex mx-auto w-50">
+      <input
+        class="form-control"
+        type="search"
+        placeholder="Search..."
+      >
+    </form>
+
+    <div class="d-flex align-items-center">
+
+      <!-- Dark / Light Mode Toggle -->
+      <button
+        class="btn btn-light me-3"
+        (click)="toggleTheme()">
+        {{ themeService.isDarkMode ? '☀️' : '🌙' }}
+      </button>
+
+      <!-- Notification -->
+      <button class="btn btn-light me-3 position-relative">
+        🔔
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          3
+        </span>
+      </button>
+
+      <!-- User Info -->
+      <div class="text-white text-end me-3">
+        <div><b>{{ student?.name }}</b></div>
+        <small>{{ student?.semester }} Semester | {{ student?.department }}</small>
+      </div>
+
+      <!-- Profile Image -->
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+        width="45"
+        height="45"
+        class="rounded-circle border border-white me-3"
+      >
+
+      <!-- Logout -->
+      <button class="btn btn-danger" (click)="logout()">
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+</nav>

@@ -1,0 +1,315 @@
+<div class="container mt-4">
+
+
+  <!-- Header -->
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+      <h2>📝 Examination</h2>
+
+      <small class="text-muted">
+        {{academicSession}}
+      </small>
+
+    </div>
+
+
+    <div>
+
+      <button 
+      class="btn btn-primary me-2"
+      (click)="downloadHallTicket()">
+
+      🎫 Hall Ticket
+
+      </button>
+
+
+      <button 
+      class="btn btn-success"
+      (click)="downloadMarksheet()">
+
+      📄 Marksheet
+
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+  <!-- Summary Cards -->
+
+
+  <div class="row g-4 mb-4">
+
+
+    <div 
+    class="col-md-3"
+    *ngFor="let card of cards">
+
+
+      <div class="card shadow text-center p-3 h-100">
+
+
+        <h6 class="text-muted">
+          {{card.title}}
+        </h6>
+
+
+        <h3 class="fw-bold">
+          {{card.value}}
+        </h3>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+  <!-- Exam Schedule -->
+
+
+  <div class="card shadow mb-4">
+
+
+    <div class="card-header bg-primary text-white">
+
+      <b>
+        📅 Exam Schedule
+      </b>
+
+    </div>
+
+
+
+    <div class="table-responsive">
+
+
+      <table class="table table-hover mb-0">
+
+
+        <thead class="table-light">
+
+          <tr>
+
+            <th>Subject</th>
+
+            <th>Date</th>
+
+            <th>Time</th>
+
+            <th>Room</th>
+
+          </tr>
+
+
+        </thead>
+
+
+
+        <tbody>
+
+
+          <tr *ngFor="let exam of exams">
+
+
+            <td>
+              {{exam.subject}}
+            </td>
+
+
+            <td>
+              {{exam.date}}
+            </td>
+
+
+            <td>
+              {{exam.time}}
+            </td>
+
+
+            <td>
+              {{exam.room}}
+            </td>
+
+
+          </tr>
+
+
+
+
+          <tr *ngIf="exams.length===0">
+
+            <td colspan="4" class="text-center">
+
+              No Exam Schedule Available
+
+            </td>
+
+          </tr>
+
+
+
+        </tbody>
+
+
+      </table>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+  <!-- Results -->
+
+
+  <div class="card shadow">
+
+
+    <div class="card-header bg-success text-white">
+
+      <b>
+        🎓 Results
+      </b>
+
+
+    </div>
+
+
+
+
+    <div class="table-responsive">
+
+
+      <table class="table table-hover mb-0">
+
+
+        <thead class="table-light">
+
+          <tr>
+
+            <th>Semester</th>
+
+            <th>SGPA</th>
+
+            <th>Status</th>
+
+            <th>Action</th>
+
+
+          </tr>
+
+
+        </thead>
+
+
+
+
+        <tbody>
+
+
+          <tr *ngFor="let r of results">
+
+
+            <td>
+              {{r.semester}}
+            </td>
+
+
+            <td>
+              {{r.sgpa}}
+            </td>
+
+
+
+            <td>
+
+              <span 
+              class="badge"
+              [ngClass]="r.status=='Pass'?'bg-success':'bg-danger'">
+
+              {{r.status}}
+
+              </span>
+
+
+            </td>
+
+
+
+
+            <td>
+
+
+              <button
+              class="btn btn-primary btn-sm"
+              (click)="viewResult(r)">
+
+              View Result
+
+              </button>
+
+
+            </td>
+
+
+          </tr>
+
+
+
+
+          <tr *ngIf="results.length===0">
+
+
+            <td colspan="4" class="text-center">
+
+              No Result Available
+
+            </td>
+
+
+          </tr>
+
+
+
+        </tbody>
+
+
+      </table>
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+</div>

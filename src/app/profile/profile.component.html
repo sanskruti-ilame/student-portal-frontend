@@ -1,0 +1,154 @@
+<div class="container mt-4" *ngIf="student">
+
+  <div class="card shadow p-4" id="profile-card">
+
+    <div class="text-center">
+
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+        width="120"
+        class="rounded-circle mb-3">
+
+      <div *ngIf="!isEditing; else editName">
+        <h3>{{ student.name }}</h3>
+      </div>
+
+      <ng-template #editName>
+        <input
+          type="text"
+          class="form-control text-center mb-2"
+          [(ngModel)]="student.name">
+      </ng-template>
+
+      <p class="text-muted">
+        {{ student.department }} | Semester {{ student.semester }}
+      </p>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+      <div class="col-md-6">
+
+        <h5 class="text-primary mb-3">Personal Details</h5>
+
+        <p><b>Student ID :</b> {{ student.id }}</p>
+        <p><b>Roll No :</b> {{ student.rollNo || 'N/A' }}</p>
+        <p><b>Department :</b> {{ student.department }}</p>
+        <p><b>Semester :</b> {{ student.semester }}</p>
+
+        <div *ngIf="!isEditing; else editEmail">
+          <p><b>Email :</b> {{ student.email }}</p>
+        </div>
+
+        <ng-template #editEmail>
+          <label>Email</label>
+          <input
+            class="form-control mb-2"
+            [(ngModel)]="student.email">
+        </ng-template>
+
+        <div *ngIf="!isEditing; else editPhone">
+          <p><b>Phone :</b> {{ student.phone }}</p>
+        </div>
+
+        <ng-template #editPhone>
+          <label>Phone</label>
+          <input
+            class="form-control"
+            [(ngModel)]="student.phone">
+        </ng-template>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <h5 class="text-success mb-3">Academic Details</h5>
+
+        <p><b>CGPA :</b> {{ student.cgpa }}</p>
+        <p><b>Attendance :</b> {{ student.attendance }}%</p>
+        <p><b>Status :</b> {{ student.status || 'Active' }}</p>
+        <p><b>Registration No :</b> {{ student.registrationNo || 'GRU202600125' }}</p>
+        <p><b>Batch :</b> {{ student.batch || '2024 - 2028' }}</p>
+        <p><b>Degree :</b> {{ student.degree || 'B.Tech' }}</p>
+        <p><b>Branch :</b> {{ student.branch || student.department }}</p>
+        <p><b>Section :</b> {{ student.section || 'A' }}</p>
+
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="alert alert-info">
+
+      <h5>Academic Summary</h5>
+
+      <div class="row text-center mt-3">
+
+        <div class="col">
+          <h4>{{ student.cgpa }}</h4>
+          <small>CGPA</small>
+        </div>
+
+        <div class="col">
+          <h4>{{ student.attendance }}%</h4>
+          <small>Attendance</small>
+        </div>
+
+        <div class="col">
+          <h4>{{ student.semester }}</h4>
+          <small>Semester</small>
+        </div>
+
+        <div class="col">
+          <h4>{{ student.status || 'Active' }}</h4>
+          <small>Status</small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="text-end mt-3">
+
+    <button
+      class="btn btn-danger me-2"
+      (click)="downloadPDF()">
+      📄 PDF
+    </button>
+
+    <button
+      class="btn btn-success me-2"
+      (click)="downloadImage()">
+      🖼️ Image
+    </button>
+
+    <button
+      *ngIf="!isEditing"
+      class="btn btn-primary"
+      (click)="editProfile()">
+      ✏ Edit
+    </button>
+
+    <button
+      *ngIf="isEditing"
+      class="btn btn-success me-2"
+      (click)="saveProfile()">
+      💾 Save
+    </button>
+
+    <button
+      *ngIf="isEditing"
+      class="btn btn-secondary"
+      (click)="cancelEdit()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>

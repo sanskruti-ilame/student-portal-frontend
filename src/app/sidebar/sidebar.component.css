@@ -1,0 +1,35 @@
+.sidebar{
+    width:240px;
+    min-height:100vh;
+    background:#1e293b;
+    box-shadow:2px 0 12px rgba(0,0,0,0.15);
+}
+
+.sidebar h4{
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.nav-link{
+    border-radius:10px;
+    padding:12px 15px;
+    color:#e2e8f0 !important;
+    transition:all .3s ease;
+    font-size:15px;
+}
+
+.nav-link:hover{
+    background:#2563eb;
+    color:#fff !important;
+    transform:translateX(5px);
+}
+
+.active{
+    background:#2563eb !important;
+    color:#fff !important;
+    font-weight:600;
+}
+
+.nav-item{
+    margin-bottom:8px;
+}

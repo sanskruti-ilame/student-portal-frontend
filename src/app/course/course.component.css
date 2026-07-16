@@ -1,0 +1,15 @@
+.container {
+    max-width: 1100px;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+table {
+    background: white;
+}
+
+h2 {
+    font-weight: bold;
+}

@@ -1,0 +1,12 @@
+.card{
+    max-width:600px;
+    margin:auto;
+}
+
+label{
+    font-weight:bold;
+}
+
+button{
+    min-width:140px;
+}

@@ -1,0 +1,13 @@
+.card{
+    max-width:700px;
+    margin:auto;
+    border-radius:10px;
+}
+
+img{
+    border-radius:50%;
+}
+
+button{
+    min-width:120px;
+}

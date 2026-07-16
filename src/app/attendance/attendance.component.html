@@ -1,0 +1,131 @@
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+      <h2>📅 My Attendance</h2>
+      <small class="text-muted">
+        Track your attendance record
+      </small>
+    </div>
+
+    <select
+      class="form-select w-auto"
+      [(ngModel)]="selectedPeriod"
+      (change)="changePeriod($event)">
+
+      <option value="Weekly">Weekly</option>
+      <option value="Monthly">Monthly</option>
+      <option value="Yearly">Yearly</option>
+
+    </select>
+
+  </div>
+
+  <!-- Summary Cards -->
+
+  <div class="row mb-4">
+
+    <div class="col-md-3">
+      <div class="card shadow text-center p-3">
+        <h6>Attendance</h6>
+        <h3 class="text-success">
+          {{ attendance }}%
+        </h3>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow text-center p-3">
+        <h6>Present</h6>
+        <h3 class="text-primary">
+          {{ present }}
+        </h3>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow text-center p-3">
+        <h6>Absent</h6>
+        <h3 class="text-danger">
+          {{ absent }}
+        </h3>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow text-center p-3">
+        <h6>Total Classes</h6>
+        <h3>
+          {{ total }}
+        </h3>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Subject Wise Attendance -->
+
+  <div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">
+        Subject Wise Attendance
+      </h5>
+    </div>
+
+    <table class="table table-hover mb-0">
+
+      <thead class="table-light">
+
+        <tr>
+          <th>Subject</th>
+          <th>Present</th>
+          <th>Total</th>
+          <th>Attendance</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let s of subjectAttendance">
+
+          <td>{{ s.subject }}</td>
+
+          <td>{{ s.present }}</td>
+
+          <td>{{ s.total }}</td>
+
+          <td>
+
+            <div class="progress" style="height:22px;">
+
+              <div
+                class="progress-bar"
+
+                [ngClass]="{
+                  'bg-success': getPercentage(s) >= 90,
+                  'bg-warning': getPercentage(s) >= 75 && getPercentage(s) < 90,
+                  'bg-danger': getPercentage(s) < 75
+                }"
+
+                [style.width.%]="getPercentage(s)">
+
+                {{ getPercentage(s) }}%
+
+              </div>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

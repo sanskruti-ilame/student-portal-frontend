@@ -1,0 +1,179 @@
+<div class="container mt-4">
+
+  <div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+      <h3>Add Student</h3>
+    </div>
+
+    <div class="card-body">
+
+      <!-- Personal Information -->
+      <h5 class="mb-3 text-primary">Personal Information</h5>
+
+      <div class="row">
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Photo</label>
+          <input type="file" class="form-control">
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Student Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control"
+          [(ngModel)]="student.name">
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Roll Number <span class="text-danger">*</span></label>
+          <input type="number" class="form-control"
+          [(ngModel)]="student.rollNo">
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Date of Birth</label>
+          <input type="date" class="form-control"
+          [(ngModel)]="student.dob">
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Gender</label>
+          <select class="form-select"
+          [(ngModel)]="student.gender">
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Phone Number <span class="text-danger">*</span></label>
+          <input type="tel" maxlength="10"
+          class="form-control"
+          [(ngModel)]="student.phone">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control"
+          [(ngModel)]="student.email">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Address</label>
+          <textarea rows="2" class="form-control"
+          [(ngModel)]="student.address"></textarea>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <!-- Academic Information -->
+      <h5 class="mb-3 text-primary">Academic Information</h5>
+
+      <div class="row">
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Department</label>
+          <select class="form-select"
+          [(ngModel)]="student.department">
+            <option value="">Select</option>
+            <option>CSE</option>
+            <option>AIML</option>
+            <option>AIDS</option>
+            <option>IT</option>
+            <option>ENTC</option>
+            <option>EE</option>
+            <option>ME</option>
+            <option>CE</option>
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Semester</label>
+          <select class="form-select"
+          [(ngModel)]="student.semester">
+            <option value="">Select</option>
+            <option *ngFor="let s of [1,2,3,4,5,6,7,8]">{{s}}</option>
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Subjects</label>
+          <input type="text" class="form-control"
+          placeholder="Java, DBMS, Angular"
+          [(ngModel)]="student.subjects">
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Internal Marks</label>
+          <input type="number" min="0" max="100"
+          class="form-control"
+          [(ngModel)]="student.internalMarks">
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Final Marks</label>
+          <input type="number" min="0" max="100"
+          class="form-control"
+          [(ngModel)]="student.marks">
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">CGPA</label>
+          <input type="number"
+          min="0"
+          max="10"
+          step="0.01"
+          class="form-control"
+          [(ngModel)]="student.cgpa">
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Status</label>
+          <select class="form-select"
+          [(ngModel)]="student.status">
+            <option>Active</option>
+            <option>Inactive</option>
+          </select>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <!-- Guardian -->
+      <h5 class="mb-3 text-primary">Guardian Information</h5>
+
+      <div class="row">
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Parent / Guardian Name</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="student.parentName">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Guardian Contact</label>
+          <input type="tel"
+          maxlength="10"
+          class="form-control"
+          [(ngModel)]="student.parentPhone">
+        </div>
+
+      </div>
+
+      <button
+      class="btn btn-success w-100 mt-3"
+      (click)="saveStudent()">
+        Save Student
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

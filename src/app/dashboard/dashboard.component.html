@@ -1,0 +1,316 @@
+<div *ngIf="isLoading" class="text-center mt-5">
+  <div class="spinner-border text-primary"></div>
+</div>
+
+<div *ngIf="!isLoading" class="container-fluid py-4">
+
+  <!-- Header -->
+  <div class="dashboard-header">
+
+    <div class="dashboard-title">
+      <h2>Hello, Sanskruti 👋</h2>
+      <p>Welcome back to your Student Dashboard</p>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+
+      <div class="search-box">
+       <input
+type="text"
+class="form-control"
+placeholder="Search..."
+[(ngModel)]="searchText"
+(input)="searchStudents()">
+      </div>
+
+      <button class="notification-btn">
+        <i class="bi bi-bell"></i>
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Welcome Banner -->
+  <div class="welcome-banner">
+
+    <h2>Student Dashboard</h2>
+    <p>Track your academic performance, attendance and activities.</p>
+
+  </div>
+
+  <!-- Overview -->
+  <div class="row g-4 mb-4">
+
+    <div class="col-lg-3 col-md-6">
+      <div class="dashboard-card">
+
+        <div class="card-icon bg-blue">
+          <i class="bi bi-award-fill"></i>
+        </div>
+
+        <h6>Current CGPA</h6>
+        <h3>{{averageCgpa | number:'1.2-2'}}</h3>
+
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+      <div class="dashboard-card">
+
+        <div class="card-icon bg-green">
+          <i class="bi bi-check-circle-fill"></i>
+        </div>
+
+        <h6>Attendance</h6>
+        <h3>{{averageAttendance | number:'1.0-0'}}%</h3>
+
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+      <div class="dashboard-card">
+
+        <div class="card-icon bg-orange">
+          <i class="bi bi-book-fill"></i>
+        </div>
+
+        <h6>Semester</h6>
+       <h3>{{semester}}</h3>
+
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+      <div class="dashboard-card">
+
+        <div class="card-icon bg-purple">
+          <i class="bi bi-building-fill"></i>
+        </div>
+
+        <h6>Department</h6>
+       <h3>{{department}}</h3>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Progress -->
+  <div class="row g-4 mb-4">
+
+    <div class="col-md-6">
+
+      <div class="chart-card">
+
+        <div class="d-flex justify-content-between">
+          <h6>Attendance Progress</h6>
+          <strong>{{averageAttendance | number:'1.0-0'}}%</strong>
+        </div>
+
+        <div class="progress mt-3">
+          <div
+            class="progress-bar bg-success"
+            [style.width.%]="averageAttendance">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="chart-card">
+
+        <div class="d-flex justify-content-between">
+          <h6>CGPA Progress</h6>
+          <strong>{{averageCgpa | number:'1.2-2'}} / 10</strong>
+        </div>
+
+        <div class="progress mt-3">
+          <div
+            class="progress-bar bg-primary"
+            [style.width.%]="averageCgpa * 10">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Charts -->
+  <div class="row g-4">
+
+    <div class="col-lg-8">
+
+      <div class="chart-card">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5>Attendance Overview</h5>
+          <span class="badge bg-primary">Current Semester</span>
+        </div>
+
+        <canvas
+          baseChart
+          [data]="attendanceChartData"
+          [type]="attendanceChartType">
+        </canvas>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="chart-card h-100">
+
+        <h5>Academic Performance</h5>
+
+        <canvas
+          baseChart
+          [data]="cgpaChartData"
+          [type]="cgpaChartType">
+        </canvas>
+
+        <hr>
+
+        <div class="row text-center">
+
+          <div class="col-6">
+            <small>CGPA</small>
+            <h4>{{averageCgpa | number:'1.2-2'}}</h4>
+          </div>
+
+          <div class="col-6">
+            <small>Attendance</small>
+            <h4>{{averageAttendance | number:'1.0-0'}}%</h4>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class="row g-4 mt-4">
+
+    <div class="col-lg-4">
+
+      <div class="chart-card h-100">
+
+        <h5>Upcoming Exams</h5>
+
+        <div class="mb-3">
+          <strong>Database Management</strong><br>
+          <small>15 July</small>
+        </div>
+
+        <div class="mb-3">
+          <strong>Operating System</strong><br>
+          <small>18 July</small>
+        </div>
+
+        <div>
+          <strong>Java Programming</strong><br>
+          <small>22 July</small>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="chart-card h-100">
+
+        <h5>Recent Activity</h5>
+
+        <p>✅ Attendance Updated</p>
+        <p>📚 Assignment Submitted</p>
+        <p>🎓 Course Registered</p>
+        <p>🔔 Profile Updated</p>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="chart-card h-100">
+
+        <h5>Quick Actions</h5>
+
+        <div class="d-grid gap-2">
+
+          <button routerLink="/attendance" class="btn btn-primary">Attendance</button>
+          <button routerLink="/course-registration" class="btn btn-success">Courses</button>
+          <button routerLink="/fees" class="btn btn-warning">Fees</button>
+          <button routerLink="/examination" class="btn btn-dark">Examination</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Schedule -->
+
+  <div class="chart-card mt-4">
+
+    <h5 class="mb-4">Today's Schedule</h5>
+
+    <div class="table-responsive">
+
+      <table class="table align-middle">
+
+        <thead>
+
+          <tr>
+            <th>Course</th>
+            <th>Faculty</th>
+            <th>Time</th>
+            <th>Status</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>Java Programming</td>
+            <td>Prof. Sharma</td>
+            <td>09:00 AM</td>
+            <td><span class="badge bg-success">Completed</span></td>
+          </tr>
+
+          <tr>
+            <td>Database Management</td>
+            <td>Prof. Patil</td>
+            <td>11:00 AM</td>
+            <td><span class="badge bg-primary">Ongoing</span></td>
+          </tr>
+
+          <tr>
+            <td>Operating System</td>
+            <td>Prof. Verma</td>
+            <td>02:00 PM</td>
+            <td><span class="badge bg-warning">Upcoming</span></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

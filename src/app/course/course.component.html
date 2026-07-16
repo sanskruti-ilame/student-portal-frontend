@@ -1,0 +1,335 @@
+<div class="container mt-4">
+
+
+  <!-- Header -->
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <h2>📚 Course Management</h2>
+
+    <button 
+      class="btn btn-primary"
+      (click)="resetForm()">
+      ➕ Add New Course
+    </button>
+
+  </div>
+
+
+
+  <!-- Add / Edit Form -->
+
+
+  <div class="card shadow mb-4">
+
+    <div class="card-header bg-primary text-white">
+
+      <b>
+        {{isEdit ? 'Update Course' : 'Add Course'}}
+      </b>
+
+    </div>
+
+
+    <div class="card-body">
+
+
+      <div class="row g-3">
+
+
+        <div class="col-md-4">
+
+          <label>Course Name</label>
+
+          <input 
+          class="form-control"
+          [(ngModel)]="course.courseName"
+          placeholder="Enter course name">
+
+        </div>
+
+
+
+        <div class="col-md-4">
+
+          <label>Course Code</label>
+
+          <input 
+          class="form-control"
+          [(ngModel)]="course.courseCode"
+          placeholder="Enter course code">
+
+        </div>
+
+
+
+
+        <div class="col-md-4">
+
+          <label>Department</label>
+
+          <input 
+          class="form-control"
+          [(ngModel)]="course.department"
+          placeholder="Enter department">
+
+        </div>
+
+
+
+
+        <div class="col-md-4">
+
+          <label>Semester</label>
+
+          <input 
+          type="number"
+          class="form-control"
+          [(ngModel)]="course.semester"
+          placeholder="Semester">
+
+        </div>
+
+
+
+
+        <div class="col-md-4">
+
+          <label>Credits</label>
+
+          <input 
+          type="number"
+          class="form-control"
+          [(ngModel)]="course.credits"
+          placeholder="Credits">
+
+        </div>
+
+
+
+
+        <div class="col-md-4 d-flex align-items-end">
+
+
+          <button
+          class="btn btn-success w-100"
+          (click)="saveCourse()">
+
+          {{isEdit ? 'Update Course' : 'Save Course'}}
+
+          </button>
+
+
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+  <!-- Search -->
+
+
+  <div class="card shadow mb-4">
+
+    <div class="card-body">
+
+
+      <div class="row">
+
+
+        <div class="col-md-10">
+
+
+          <input
+          type="text"
+          class="form-control"
+          placeholder="Search course..."
+          [(ngModel)]="searchText"
+          (input)="searchCourse()">
+
+
+
+        </div>
+
+
+
+        <div class="col-md-2">
+
+
+          <button
+          class="btn btn-secondary w-100"
+          (click)="refreshCourses()">
+
+          Refresh
+
+          </button>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+  <!-- Course Table -->
+
+
+  <div class="card shadow">
+
+
+    <div class="card-header">
+
+      <b>
+        Available Courses
+      </b>
+
+    </div>
+
+
+
+    <div class="table-responsive">
+
+
+      <table class="table table-hover mb-0">
+
+
+        <thead class="table-light">
+
+          <tr>
+
+            <th>ID</th>
+
+            <th>Course Code</th>
+
+            <th>Course Name</th>
+
+            <th>Department</th>
+
+            <th>Semester</th>
+
+            <th>Credits</th>
+
+            <th>Actions</th>
+
+          </tr>
+
+
+        </thead>
+
+
+
+
+        <tbody>
+
+
+          <tr *ngFor="let c of courses">
+
+
+            <td>
+              {{c.id}}
+            </td>
+
+
+            <td>
+              {{c.courseCode}}
+            </td>
+
+
+            <td>
+              {{c.courseName}}
+            </td>
+
+
+            <td>
+              {{c.department}}
+            </td>
+
+
+            <td>
+              {{c.semester}}
+            </td>
+
+
+            <td>
+              {{c.credits}}
+            </td>
+
+
+
+            <td>
+
+
+              <button
+              class="btn btn-warning btn-sm me-2"
+              (click)="editCourse(c)">
+
+              Edit
+
+              </button>
+
+
+
+              <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteCourse(c.id)">
+
+              Delete
+
+              </button>
+
+
+
+            </td>
+
+
+
+          </tr>
+
+
+
+          <tr *ngIf="courses.length===0">
+
+            <td colspan="7" class="text-center">
+
+              No Courses Found
+
+            </td>
+
+          </tr>
+
+
+
+        </tbody>
+
+
+
+      </table>
+
+
+    </div>
+
+
+  </div>
+
+
+
+</div>
